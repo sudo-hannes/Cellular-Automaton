@@ -8,15 +8,24 @@ public class UI_Controller : MonoBehaviour
 {
 
     public Button btnGameOfLife;
+    public Button btnLangtonsAnt;
     // Start is called before the first frame update
     void Start()
     {
-        Button btn = btnGameOfLife.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
+        Button btnGoL = btnGameOfLife.GetComponent<Button>();
+        btnGoL.onClick.AddListener(NavigateGameOfLife);
+
+        Button btnLA = btnLangtonsAnt.GetComponent<Button>();
+        btnLA.onClick.AddListener(NavigateLangtonsAnt);
     }
 
-    void TaskOnClick()
+    void NavigateGameOfLife()
     {
         SceneManager.LoadScene("Conways Game Of Life");
+    }
+
+    void NavigateLangtonsAnt()
+    {
+        SceneManager.LoadScene("Langtons Ant");
     }
 }
