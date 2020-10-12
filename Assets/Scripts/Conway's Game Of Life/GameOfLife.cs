@@ -5,9 +5,10 @@ using UnityEngine;
 public class GameOfLife : GridObject
 {
     // Start is called before the first frame update
+    
     void Start()
     {
-        intialiseGrid(true);
+        intialiseGrid(randomAtStart,-1.0f,-0.8f);
     }
 
     // Update is called once per frame
@@ -17,11 +18,19 @@ public class GameOfLife : GridObject
         {
             stepConway();
             drawStates();
+            generations.Add(states);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            reverseState();
         }
 
         if (Input.GetMouseButtonDown(0))
         {
             setCell();
+            drawStates();
+            generations.Add(states);
         }
     }
 

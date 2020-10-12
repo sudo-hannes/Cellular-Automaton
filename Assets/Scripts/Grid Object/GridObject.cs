@@ -12,9 +12,10 @@ public class GridObject : MonoBehaviour
     public Color deadColor = new Color(191.0f, 191.0f, 191.0f);
     public Color aliveColor = new Color(34.0f, 139.0f, 34.0f);
     public int[,] states;
+    public List<int[,]> generations = new List<int[,]>();
     Camera cam;
 
-    public void intialiseGrid(bool randomCells)
+    public void intialiseGrid(bool randomCells, float offsetx, float offsety)
     {
         states = new int[rows, cols];
         cells = new GameObject[rows, cols];
@@ -31,7 +32,7 @@ public class GridObject : MonoBehaviour
                 {
                     states[x, y] = 0;
                 }
-                cells[x, y] = Instantiate(prefab, new Vector3((x * 0.2f) - 1.0f, (y * 0.2f) - 0.8f, 0), Quaternion.identity);
+                cells[x, y] = Instantiate(prefab, new Vector3((x * 0.2f) + offsetx, (y * 0.2f) + offsety, 0), Quaternion.identity);
                 cells[x, y].name = x + ":" + y;
                 if (x == 0)
                 {
@@ -68,13 +69,10 @@ public class GridObject : MonoBehaviour
             int y = int.Parse(coordinates[1]);
             if (rend.color == aliveColor)
             {
-                rend.color = deadColor;
-
                 states[x, y] = 0;
             }
             else
-            {
-                rend.color = aliveColor;
+            { 
                 states[x, y] = 1;
             }
         }
@@ -99,5 +97,16 @@ public class GridObject : MonoBehaviour
 
             }
         }
+    }
+
+    public void reverseState()
+    {
+
+        if (generations.Count-1 > 0)
+        {
+            generations.RemoveAt(generations.Count - 1);
+            states = generations[generations.Count - 1];
+            drawStates();
+        }   
     }
 }
