@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class UI_Controller_GameOfLIfe : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
