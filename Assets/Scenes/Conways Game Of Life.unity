@@ -159,15 +159,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e480755f8fa4f49b00d20ace14a472, type: 3}
+  m_Script: {fileID: 11500000, guid: f5614de2093bab74e9b3d8e07d89d2a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rows: 85
+  rows: 87
   cols: 48
   randomAtStart: 0
   prefab: {fileID: 253444395557546935, guid: ba6d5f17f16ab614b817f7e66fee752b, type: 3}
   deadColor: {r: 191, g: 191, b: 191, a: 1}
-  aliveColor: {r: 1, g: 0, b: 0, a: 1}
+  aliveColor: {r: 0, g: 0.49056602, b: 0, a: 1}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -178,7 +178,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

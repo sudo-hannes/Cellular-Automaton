@@ -1,12 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.Design.Serialization;
-using System.Threading;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class createGrid : MonoBehaviour
+public class GridObject : MonoBehaviour
 {
     public int rows = 87;
     public int cols = 48;
@@ -14,73 +10,11 @@ public class createGrid : MonoBehaviour
     public GameObject[,] cells;
     public GameObject prefab;
     public Color deadColor = new Color(191.0f, 191.0f, 191.0f);
-    public Color aliveColor = new Color(34.0f,139.0f,34.0f);
-    private int[,] states;
+    public Color aliveColor = new Color(34.0f, 139.0f, 34.0f);
+    public int[,] states;
     Camera cam;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        intialiseGrid(randomAtStart);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            stepConway();
-            drawStates();
-        }
-
-        if (Input.GetMouseButtonDown(0)) 
-        {
-            setCell();
-        }
-    }
-
-    //step foward one generation using conway's game of life
-    void stepConway()
-    {
-        int[,] next = new int[rows, cols];
-
-        for (int y = 1; y < cols - 1; y++)
-        {
-            for (int x = 1; x < rows - 1; x++)
-            {
-                int neighbors = 0;
-                for (int i = -1; i <= 1; i++)
-                {
-                    for (int j = -1; j <= 1; j++)
-                    {
-                        neighbors += states[(x + i), (y + j)];
-                    }
-                }
-                neighbors -= states[x, y];
-
-                if (states[x, y] == 1 && neighbors < 2)
-                {
-                    next[x, y] = 0;
-                }
-                else if (states[x, y] == 1 && neighbors > 3)
-                {
-                    next[x, y] = 0;
-                }
-                else if (states[x, y] == 0 && neighbors == 3)
-                {
-                    next[x, y] = 1;
-                }
-                else 
-                {
-                    next[x, y] = states[x, y];
-                }
-            }
-        }
-        states = next;
-    }
-
-    //intialise Grid at start of game
-    void intialiseGrid(bool randomCells) 
+    public void intialiseGrid(bool randomCells)
     {
         states = new int[rows, cols];
         cells = new GameObject[rows, cols];
@@ -121,7 +55,7 @@ public class createGrid : MonoBehaviour
     }
 
     //set a specific cell to alive or dead
-    void setCell()
+    public void setCell()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -147,7 +81,7 @@ public class createGrid : MonoBehaviour
     }
 
     //draws the current state
-    void drawStates()
+    public void drawStates()
     {
         for (int y = 0; y < cols; y++)
         {
@@ -162,10 +96,8 @@ public class createGrid : MonoBehaviour
                 {
                     rend.color = deadColor;
                 }
-                
+
             }
         }
     }
 }
-
-    
