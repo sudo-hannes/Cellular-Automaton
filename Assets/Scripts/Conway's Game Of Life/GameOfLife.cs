@@ -8,7 +8,7 @@ public class GameOfLife : GridObject
     
     void Start()
     {
-        intialiseGrid(randomAtStart,-1.0f,-0.8f);
+        intialiseGrid(randomAtStart,-25.0f,-15.0f);
     }
 
     // Update is called once per frame
