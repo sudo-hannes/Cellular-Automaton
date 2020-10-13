@@ -10,7 +10,7 @@ public class GameOfLife : GridObject
     // Start is called before the first frame update
     void Start()
     {
-        intialiseGrid(randomAtStart,-25.0f,-15.0f);
+        intialiseGrid(randomAtStart,-25.0f,-15.0f,0.2f);
         genText.text = "Generation: "+genCount;
     }
 

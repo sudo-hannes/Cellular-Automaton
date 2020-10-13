@@ -15,7 +15,7 @@ public class GridObject : MonoBehaviour
     public List<int[,]> generations = new List<int[,]>();
     Camera cam;
 
-    public void intialiseGrid(bool randomCells, float offsetx, float offsety)
+    public void intialiseGrid(bool randomCells, float offsetx, float offsety, float spaceInbetween)
     {
         states = new int[rows, cols];
         cells = new GameObject[rows, cols];
@@ -32,7 +32,7 @@ public class GridObject : MonoBehaviour
                 {
                     states[x, y] = 0;
                 }
-                cells[x, y] = Instantiate(prefab, new Vector3((x * 0.2f) + offsetx, (y * 0.2f) + offsety, 0), Quaternion.identity);
+                cells[x, y] = Instantiate(prefab, new Vector3((x * spaceInbetween) + offsetx, (y * spaceInbetween) + offsety, 0), Quaternion.identity);
                 cells[x, y].name = x + ":" + y;
                 if (x == 0)
                 {

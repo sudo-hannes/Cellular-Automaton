@@ -123,6 +123,62 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &163131937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 163131939}
+  - component: {fileID: 163131938}
+  m_Layer: 0
+  m_Name: Grid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &163131938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163131937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2c523ed8e30af4ab3f617de3e8b6cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rows: 87
+  cols: 48
+  randomAtStart: 0
+  prefab: {fileID: 253444395557546935, guid: abe08e19dd7cfb64993942e341dee609, type: 3}
+  deadColor: {r: 191, g: 191, b: 191, a: 1}
+  aliveColor: {r: 0.10196079, g: 0.10196079, b: 0.10196079, a: 1}
+  offsetX: -7
+  offsetY: -5
+  spaceInbetween: 0.2
+  ant: {fileID: 253444395557546935, guid: db6bf4a2e065f5049bf08f110c9e0931, type: 3}
+  gridLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!4 &163131939
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163131937}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &609464993
 GameObject:
   m_ObjectHideFlags: 0
