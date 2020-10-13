@@ -26,9 +26,13 @@ public class UI_Controller_LangtonsAnt : MonoBehaviour
     }
     void AddRule()
     {
-        GameObject uiSpawnPos = canvas.transform.GetChild(1).gameObject;
+        GameObject uiSpawnPos = canvas.transform.GetChild(0).GetChild(1).gameObject;
 
         Instantiate(rulePrefab, uiSpawnPos.transform.position + Vector3.down * 125 * index, Quaternion.identity, uiSpawnPos.transform);
+
+        LangtonsAnt ant = GameObject.Find("Grid").GetComponent<LangtonsAnt>();
+        ant.addRule(Color.white, 1, Color.blue);
+        ant.addRule(Color.blue, -1, Color.white);
 
         index++;
     }
