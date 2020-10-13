@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOfLife : GridObject
 {
+    public Text genText;
+    public int genCount = 0;
     // Start is called before the first frame update
-    
     void Start()
     {
         intialiseGrid(randomAtStart,-25.0f,-15.0f);
+        genText.text = "Generation: "+genCount;
     }
 
     // Update is called once per frame
@@ -19,11 +22,18 @@ public class GameOfLife : GridObject
             stepConway();
             drawStates();
             generations.Add(states);
+            genCount++;
+            genText.text = "Generation: " + genCount;
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             reverseState();
+            if (genCount > 1)
+            {
+                genCount--;
+                genText.text = "Generation: " + genCount;
+            }
         }
 
         if (Input.GetMouseButtonDown(0))
