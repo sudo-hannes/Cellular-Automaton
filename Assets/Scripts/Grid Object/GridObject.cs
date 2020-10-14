@@ -55,6 +55,26 @@ public class GridObject : MonoBehaviour
         drawStates();
     }
 
+    public void resetGrid(bool randomAtStart)
+    {
+        generations.Clear();
+        for (int y = 0; y < cols; y++)
+        {
+            for (int x = 0; x < rows; x++)
+            {
+                if (randomAtStart)
+                {
+                    states[x, y] = Random.Range(0, 2);
+                }
+                else 
+                {
+                    states[x, y] = 0;
+                }
+            }
+        }
+        drawStates();
+    }
+
     //set a specific cell to alive or dead
     public void setCell()
     {

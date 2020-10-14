@@ -7,17 +7,21 @@ public class GameOfLife : GridObject
 {
     public Text genText;
     public int genCount = 0;
+    public Button resetButton;
+    public Toggle randomToggle;
+    public bool resetRandom;
     // Start is called before the first frame update
     void Start()
     {
         intialiseGrid(randomAtStart,-25.0f,-15.0f,0.2f);
         genText.text = "Generation: "+genCount;
+        resetButton.onClick.AddListener(resetOnClick);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             stepConway();
             drawStates();
@@ -26,7 +30,7 @@ public class GameOfLife : GridObject
             genText.text = "Generation: " + genCount;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             reverseState();
             if (genCount > 1)
@@ -42,6 +46,19 @@ public class GameOfLife : GridObject
             drawStates();
             generations.Add(states);
         }
+    }
+
+    void resetOnClick()
+    {
+        resetRandom = randomToggle.isOn;
+        resetGrid(resetRandom);
+        genCount = 0;
+        genText.text = "Generation: " + genCount;
+    }
+
+    void randomToggleChange() 
+    {
+
     }
 
     void stepConway()
