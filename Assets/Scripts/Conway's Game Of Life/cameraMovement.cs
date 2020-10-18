@@ -41,11 +41,11 @@ public class cameraMovement : MonoBehaviour
             Camera.main.transform.position = new Vector3(0.0f, 0.0f, -53.0f);
             return;
         }
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.Equals))
         {
             cam.transform.position += cam.transform.forward * 1.0f * zoomSpeed;
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.Minus))
         {
             cam.transform.position += cam.transform.forward * -1.0f * zoomSpeed;
         }
