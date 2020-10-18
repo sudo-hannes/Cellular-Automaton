@@ -13,7 +13,7 @@ public class GameOfLife : GridObject
     // Start is called before the first frame update
     void Start()
     {
-        intialiseGrid(randomAtStart,-25.0f,-15.0f,0.2f);
+        intialiseGrid(randomAtStart,-20.0f,-22.0f,0.2f);
         genText.text = "Generation: "+genCount;
         resetButton.onClick.AddListener(resetOnClick);
     }
@@ -54,11 +54,6 @@ public class GameOfLife : GridObject
         resetGrid(resetRandom);
         genCount = 0;
         genText.text = "Generation: " + genCount;
-    }
-
-    void randomToggleChange() 
-    {
-
     }
 
     void stepConway()

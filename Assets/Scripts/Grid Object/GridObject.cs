@@ -119,6 +119,26 @@ public class GridObject : MonoBehaviour
         }
     }
 
+    public void drawStates(int[,] states)
+    {
+        for (int y = 0; y < cols; y++)
+        {
+            for (int x = 0; x < rows; x++)
+            {
+                SpriteRenderer rend = cells[x, y].GetComponent<SpriteRenderer>();
+                if (states[x, y] == 1)
+                {
+                    rend.color = aliveColor;
+                }
+                else
+                {
+                    rend.color = deadColor;
+                }
+
+            }
+        }
+    }
+
     public void reverseState()
     {
 

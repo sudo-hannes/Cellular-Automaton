@@ -29,12 +29,11 @@ public class cameraMovement : MonoBehaviour
 
     void Zoom()
     {
-        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
         float z = cam.transform.position.z;
 
-        if (z < -241)
+        if (z < -300)
         {
-            Camera.main.transform.position = new Vector3(0.0f, 0.0f, -241.0f);
+            Camera.main.transform.position = new Vector3(0.0f, 0.0f, -300.0f);
             return;
         }
         if (z > -53)
@@ -42,7 +41,15 @@ public class cameraMovement : MonoBehaviour
             Camera.main.transform.position = new Vector3(0.0f, 0.0f, -53.0f);
             return;
         }
-        cam.transform.position += cam.transform.forward * scrollInput * zoomSpeed;
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            cam.transform.position += cam.transform.forward * 1.0f * zoomSpeed;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            cam.transform.position += cam.transform.forward * -1.0f * zoomSpeed;
+        }
+
     }
 
     public void FocusOnPosition(Vector3 pos)
