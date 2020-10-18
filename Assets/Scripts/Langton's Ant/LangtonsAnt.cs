@@ -11,11 +11,12 @@ public class LangtonsAnt : GridObject
     public float spaceInbetween = 0.2f;
     public GameObject ant;
     private GameObject instantiatedAnt;
-    public Dictionary<Color,int> ruleDictionary;
+    public Dictionary<Color, int> ruleDictionary;
     public Dictionary<Color, Color> colorMap;
     public LayerMask gridLayer;
     public int count = 0;
     public Text countText;
+    public bool start = false;
     
     // Start is called before the first frame update
     void Start()
@@ -31,12 +32,15 @@ public class LangtonsAnt : GridObject
 
     // Update is called once per frame
     void Update()
-    {
-        if(ruleDictionary.Count > 0)
+    { 
+        if(start)
         {
-            stepAnt();
-            count++;
-            countText.text = count.ToString();
+            if (ruleDictionary.Count > 0)
+            {
+                stepAnt();
+                count++;
+                countText.text = count.ToString();
+            }
         }
     }
     
@@ -57,7 +61,7 @@ public class LangtonsAnt : GridObject
             //Find color of block
             GameObject currentBlock = collider.gameObject;
             Color currentColor = currentBlock.GetComponent<SpriteRenderer>().color;
-
+            Debug.Log(currentColor.ToString());
             //Find direction based on rule
             applyRule(currentColor, currentBlock.GetComponent<SpriteRenderer>());
             return;
@@ -98,6 +102,16 @@ public class LangtonsAnt : GridObject
     {
         ruleDictionary.Add(color, direction);
         colorMap.Add(color, resultColor);
-        //Debug.Log(ruleDictionary);
+
+        Debug.Log("Rules:");
+        foreach (var item in ruleDictionary)
+        {
+            Debug.Log(item.Key + ", " + item.Value);
+        }
+        Debug.Log("Color Map:");
+        foreach (var item in colorMap)
+        {
+            Debug.Log(item.Key + ", " + item.Value);
+        }
     }
 }
