@@ -3152,8 +3152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
-  zoomSpeed: 50
-  zoomBoundUpper: -500
+  zoomSpeed: 2
+  zoomBoundUpper: -300
   zoomBoundLower: -53
 --- !u!1 &1671016767
 GameObject:
