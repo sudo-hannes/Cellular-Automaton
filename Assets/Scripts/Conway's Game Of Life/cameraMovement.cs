@@ -6,6 +6,8 @@ public class cameraMovement : MonoBehaviour
 {
     public float moveSpeed;
     public float zoomSpeed;
+    public float zoomBoundUpper = -300f;
+    public float zoomBoundLower = -53f;
 
     private Camera cam;
 
@@ -31,14 +33,14 @@ public class cameraMovement : MonoBehaviour
     {
         float z = cam.transform.position.z;
 
-        if (z < -300)
+        if (z < zoomBoundUpper)
         {
-            Camera.main.transform.position = new Vector3(0.0f, 0.0f, -300.0f);
+            Camera.main.transform.position = new Vector3(0.0f, 0.0f, zoomBoundUpper);
             return;
         }
-        if (z > -53)
+        if (z > zoomBoundLower)
         {
-            Camera.main.transform.position = new Vector3(0.0f, 0.0f, -53.0f);
+            Camera.main.transform.position = new Vector3(0.0f, 0.0f, zoomBoundLower);
             return;
         }
         if (Input.GetKey(KeyCode.Equals))

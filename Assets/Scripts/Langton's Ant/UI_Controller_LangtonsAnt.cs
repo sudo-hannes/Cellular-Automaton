@@ -79,15 +79,15 @@ public class UI_Controller_LangtonsAnt : MonoBehaviour
     void AddRule()
     {
         string textCurrentColour = ruleCurrentColourText.transform.GetComponent<Text>().text;
-        Color currentColour = Color.white;
+        Color currentColour = Color.black;
         string textDirection = ruleDirectionText.transform.GetComponent<Text>().text;
         int direction = -99;
         string textResColour = ruleColourText.transform.GetComponent<Text>().text;
         Color selectedColour = Color.blue;
 
-        if (textCurrentColour == "White")
+        if (textCurrentColour == "Black")
         {
-            currentColour = Color.white;
+            currentColour = Color.black;
         }
         else if (textCurrentColour == "Red")
         {
@@ -120,9 +120,9 @@ public class UI_Controller_LangtonsAnt : MonoBehaviour
             direction = 1;
         }
 
-        if(textResColour == "White")
+        if(textResColour == "Black")
         {
-            selectedColour = Color.white;
+            selectedColour = Color.black;
         }
         else if(textResColour == "Red")
         {
@@ -150,11 +150,11 @@ public class UI_Controller_LangtonsAnt : MonoBehaviour
         GameObject rule = Instantiate(rulePrefab, uiSpawnPos.transform.position + Vector3.down * 75 * index, Quaternion.identity, uiSpawnPos.transform);
         if(direction == -1)
         {
-            rule.transform.GetChild(1).transform.Rotate(0f, 0f, -90f);
+            rule.transform.GetChild(1).transform.Rotate(0f, 0f, 90f);
         }
         else
         {
-            rule.transform.GetChild(1).transform.Rotate(0f, 0f, 90f);
+            rule.transform.GetChild(1).transform.Rotate(0f, 0f, -90f);
         }
         
         rule.transform.GetChild(0).GetComponent<Image>().color = selectedColour;

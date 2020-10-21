@@ -9,6 +9,7 @@ public class UI_Controller : MonoBehaviour
 
     public Button btnGameOfLife;
     public Button btnLangtonsAnt;
+    public Button btnExit;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,9 @@ public class UI_Controller : MonoBehaviour
 
         Button btnLA = btnLangtonsAnt.GetComponent<Button>();
         btnLA.onClick.AddListener(NavigateLangtonsAnt);
+
+        Button btnE = btnExit.GetComponent<Button>();
+        btnE.onClick.AddListener(ExitGame);
     }
 
     void NavigateGameOfLife()
@@ -27,5 +31,11 @@ public class UI_Controller : MonoBehaviour
     void NavigateLangtonsAnt()
     {
         SceneManager.LoadScene("Langtons Ant");
+    }
+
+    void ExitGame()
+    {
+        //Debug.Log("QUIT!");
+        Application.Quit();
     }
 }

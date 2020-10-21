@@ -24,8 +24,8 @@ public class LangtonsAnt : GridObject
         countText = GameObject.Find("CountText").GetComponent<Text>();
         ruleDictionary = new Dictionary<Color,int>();
         colorMap = new Dictionary<Color, Color>();
-        aliveColor = Color.white;
-        deadColor = Color.white;
+        aliveColor = Color.black;
+        deadColor = Color.black;
         intialiseGrid(false, offsetX, offsetY,spaceInbetween);
         createAnt();
     }
@@ -39,7 +39,7 @@ public class LangtonsAnt : GridObject
             {
                 stepAnt();
                 count++;
-                countText.text = count.ToString();
+                countText.text = "Generation: " + count.ToString();
             }
         }
     }
