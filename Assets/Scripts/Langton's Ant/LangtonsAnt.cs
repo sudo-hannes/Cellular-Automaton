@@ -28,6 +28,7 @@ public class LangtonsAnt : GridObject
         deadColor = Color.black;
         intialiseGrid(false, offsetX, offsetY,spaceInbetween);
         createAnt();
+        //runRuleString("LRRRRLLLRRR", Color.black, Color.white);
     }
 
     // Update is called once per frame
@@ -113,5 +114,84 @@ public class LangtonsAnt : GridObject
         {
             Debug.Log(item.Key + ", " + item.Value);
         }
+    }
+
+    public void runRuleString(string input, Color from, Color to)
+    {
+
+        Color b = from;
+        Color w = to;
+        Color l = from;
+
+        int decision = 0;
+        for (int i = 0; i < input.Length; i++)
+        {
+            if (input[i] == 'L')
+            {
+                decision = -1;
+            }
+            else if (input[i] == 'R')
+            {
+                decision = 1;
+            }
+            else
+            {
+                Debug.LogError("Incorrect input string");
+            }
+            if (i == 0)
+            {
+                l = Color.black;
+                addRule(l, decision, Color.Lerp(b, w, (float)(i + 1) / input.Length));
+            }
+            else if (i == input.Length - 1)
+            {
+                l = Color.Lerp(b, w, (float)i / input.Length);
+                addRule(l, decision, Color.black);
+            }
+            else
+            {
+                l = Color.Lerp(b, w, (float)i / input.Length);
+                addRule(l, decision, Color.Lerp(b, w, (float)(i + 1) / input.Length));
+            }
+
+        }
+    }
+    public void runGrowingSquare()
+    {
+        /*
+        Dictionary<Color, int> growingSquareRules = new Dictionary<Color, int>;
+        Dictionary<Color, Color> growingSquareColorMap = new Dictionary<Color, Color>;
+
+        Color b = Color.black;
+        Color w = Color.white;
+
+        growingSquareRules.Add();
+        */
+        Color b = Color.red;
+        Color w = Color.white;
+        Color l = Color.red;
+
+        //LRRRRRLLR
+        int[] ruleDirectionArray = { -1, 1, 1, 1, 1, 1, -1, -1, 1 };
+        for (int i = 0; i < 9; i++)
+        {
+            if (i == 0)
+            {
+                l = Color.black;
+                addRule(l, ruleDirectionArray[i], Color.Lerp(b, w, (float)(i + 1) / 9));
+            }
+            else if (i == 8)
+            {
+                l = Color.Lerp(b, w, (float)i / 9);
+                addRule(l, ruleDirectionArray[i], Color.black);
+            }
+            else
+            {
+                l = Color.Lerp(b, w, (float)i / 9);
+                addRule(l, ruleDirectionArray[i], Color.Lerp(b, w, (float)(i + 1) / 9));
+            }
+
+        }
+
     }
 }

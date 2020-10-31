@@ -15,6 +15,10 @@ public class UI_Controller_LangtonsAnt : MonoBehaviour
     public GameObject ruleDirectionText;
     public GameObject ruleColourText;
     public GameObject ruleCurrentColourText;
+    public GameObject ruleStringInput;
+    public Button ruleStringSubmit;
+    public GameObject ruleStringFromText;
+    public GameObject ruleStringToText;
     public static bool start = false;
     private int index = 0;
     // Start is called before the first frame update
@@ -25,6 +29,9 @@ public class UI_Controller_LangtonsAnt : MonoBehaviour
 
         Button btnDirection = directionButton.GetComponent<Button>();
         btnDirection.onClick.AddListener(ChangeDirection);
+
+        Button ruleStringApply = ruleStringSubmit.GetComponent<Button>();
+        ruleStringApply.onClick.AddListener(applyRuleString);
 
         Button start = startButton.GetComponent<Button>();
         start.onClick.AddListener(StartAnt);
@@ -41,6 +48,71 @@ public class UI_Controller_LangtonsAnt : MonoBehaviour
         }
     }
 
+    void applyRuleString()
+    {
+        string input = ruleStringInput.transform.GetChild(2).GetComponent<Text>().text;
+
+        string textFromColour = ruleStringFromText.transform.GetComponent<Text>().text;
+        Color fromColor = Color.black;
+        string textToColour = ruleStringToText.transform.GetComponent<Text>().text;
+        Color toColor = Color.blue;
+
+        if (textFromColour == "Black")
+        {
+            fromColor = Color.black;
+        }
+        else if (textFromColour == "Red")
+        {
+            fromColor = Color.red;
+        }
+        else if (textFromColour == "Yellow")
+        {
+            fromColor = Color.yellow;
+        }
+        else if (textFromColour == "Green")
+        {
+            fromColor = Color.green;
+        }
+        else if (textFromColour == "Blue")
+        {
+            fromColor = Color.blue;
+        }
+        else if (textFromColour == "Purple")
+        {
+            fromColor = Color.magenta;
+        }
+
+        if (textToColour == "Black")
+        {
+            toColor = Color.black;
+        }
+        else if (textToColour == "Red")
+        {
+            toColor = Color.red;
+        }
+        else if (textToColour == "Yellow")
+        {
+            toColor = Color.yellow;
+        }
+        else if (textToColour == "Green")
+        {
+            toColor = Color.green;
+        }
+        else if (textToColour == "Blue")
+        {
+            toColor = Color.blue;
+        }
+        else if (textToColour == "Purple")
+        {
+            toColor = Color.magenta;
+        }
+
+        Debug.Log(input);
+
+        LangtonsAnt ant = GameObject.Find("Grid").GetComponent<LangtonsAnt>();
+        ant.runRuleString(input, fromColor, toColor);
+        ruleStringSubmit.interactable = false;
+    }
     void ChangeDirection()
     {
         string text = ruleDirectionText.GetComponent<Text>().text;
