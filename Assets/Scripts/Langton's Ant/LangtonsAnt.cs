@@ -17,6 +17,7 @@ public class LangtonsAnt : GridObject
     public int count = 0;
     public Text countText;
     public bool start = false;
+    public int stepCount = 1;
     
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,11 @@ public class LangtonsAnt : GridObject
         aliveColor = Color.black;
         deadColor = Color.black;
         intialiseGrid(false, offsetX, offsetY,spaceInbetween);
+        
+        
         createAnt();
+        Vector3 antPos = instantiatedAnt.transform.position;
+        Camera.main.transform.localPosition = new Vector3(antPos.x, antPos.y, antPos.z - 10);
         //runRuleString("LRRRRLLLRRR", Color.black, Color.white);
     }
 
@@ -38,9 +43,13 @@ public class LangtonsAnt : GridObject
         {
             if (ruleDictionary.Count > 0)
             {
-                stepAnt();
-                count++;
-                countText.text = "Generation: " + count.ToString();
+                for (int i = 0; i < stepCount; i++)
+                {
+                    stepAnt();
+                    count++;
+                    countText.text = "Generation: " + count.ToString();
+                }
+                
             }
         }
     }

@@ -21,9 +21,14 @@ public class UI_Controller_LangtonsAnt : MonoBehaviour
     public GameObject ruleStringToText;
     public static bool start = false;
     private int index = 0;
+    public Slider sliderElement;
+    public Text sliderText;
     // Start is called before the first frame update
     void Start()
     {
+        sliderElement = GameObject.Find("StepSlider").GetComponent<Slider>();
+        sliderText = GameObject.Find("SliderText").GetComponent<Text>();
+
         Button btnAddRule = addRuleButton.GetComponent<Button>();
         btnAddRule.onClick.AddListener(AddRule);
 
@@ -38,6 +43,9 @@ public class UI_Controller_LangtonsAnt : MonoBehaviour
 
         Button restart = restartButton.GetComponent<Button>();
         restart.onClick.AddListener(RestartAnt);
+
+        Slider slider = sliderElement.GetComponent<Slider>();
+        slider.onValueChanged.AddListener(delegate { ChangeStep(); });
     }
 
     private void Update()
@@ -238,5 +246,12 @@ public class UI_Controller_LangtonsAnt : MonoBehaviour
         ant.addRule(currentColour, direction, selectedColour);
 
         index++;
+    }
+
+    void ChangeStep()
+    {
+        LangtonsAnt ant = GameObject.Find("Grid").GetComponent<LangtonsAnt>();
+        ant.stepCount = (int)sliderElement.value;
+        sliderText.text = sliderElement.value.ToString();
     }
 }

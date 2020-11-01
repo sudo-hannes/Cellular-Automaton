@@ -35,12 +35,12 @@ public class cameraMovement : MonoBehaviour
 
         if (z < zoomBoundUpper)
         {
-            Camera.main.transform.position = new Vector3(0.0f, 0.0f, zoomBoundUpper);
+            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, zoomBoundUpper);
             return;
         }
         if (z > zoomBoundLower)
         {
-            Camera.main.transform.position = new Vector3(0.0f, 0.0f, zoomBoundLower);
+            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, zoomBoundLower);
             return;
         }
         if (Input.GetKey(KeyCode.Equals))
