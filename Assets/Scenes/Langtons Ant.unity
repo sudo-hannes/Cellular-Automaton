@@ -1014,7 +1014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2c523ed8e30af4ab3f617de3e8b6cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rows: 250
+  rows: 350
   cols: 250
   randomAtStart: 0
   prefab: {fileID: 253444395557546935, guid: abe08e19dd7cfb64993942e341dee609, type: 3}
@@ -1193,10 +1193,10 @@ RectTransform:
   m_Father: {fileID: 1704982722}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00003767, y: 296.47998}
-  m_SizeDelta: {x: 0.000030517578, y: -686.19257}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -2.6355, y: 291.5}
+  m_SizeDelta: {x: -24.634857, y: 214.80042}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &238786362
 MonoBehaviour:
@@ -1599,7 +1599,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1471733081}
   m_Direction: 0
   m_MinValue: 1
-  m_MaxValue: 500
+  m_MaxValue: 1500
   m_WholeNumbers: 1
   m_Value: 1
   m_OnValueChanged:
@@ -4291,8 +4291,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 41.317, y: -172.15}
-  m_SizeDelta: {x: 40.965992, y: 26.353271}
+  m_AnchoredPosition: {x: 74.851, y: -172}
+  m_SizeDelta: {x: 108.03458, y: 26.054306}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1097236088
 MonoBehaviour:
@@ -6056,8 +6056,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0
   zoomSpeed: 2
-  zoomBoundUpper: -450
-  zoomBoundLower: -53
+  zoomBoundUpper: -500
+  zoomBoundLower: -55
 --- !u!1 &1613948681
 GameObject:
   m_ObjectHideFlags: 0
@@ -6092,8 +6092,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2.9799957, y: 0}
+  m_SizeDelta: {x: -5.957947, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1613948683
 MonoBehaviour:
@@ -6128,9 +6128,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1.5
-  m_Text: "Examples of Rules:\nLR: \t\t\t\t\t\t\t\tLangton's Ant\nLLRL:\t\t\t\t\t\t\tLR
-    with different \n\t\t\t\t\t\t\t\t\tconfiguration\nLLRR: \t\t\t\t\t\tCreates Cardioids\nLRRRRRLLR:\t\t\tGrowing
-    Square with \n\t\t\t\t\t\t\t\t\thighways\nLRRRRLLLRRR:\t\tArchimedes' spiral\nRLLLLRRRLLLR:\t\tLogarithmic
+  m_Text: "Examples of Rules:\nLR: \t\t\t\t\t\t\t\t\tLangton's Ant\nLLRL:\t\t\t\t\t\t\t\tLR
+    with different \n\t\t\t\t\t\t\t\t\t\tconfiguration\nLLRR: \t\t\t\t\t\t\tCreates
+    Cardioids\nLRRRRRLLR:\t\t\t\t\tGrowing Square with \n\t\t\t\t\t\t\t\t\t\tbouncing
+    highways\nLRRRRLLLRRR:\t\t\tArchimedes' spiral\nRLLLLRRRLLLR:\t\t\tLogarithmic
     spiral\n"
 --- !u!222 &1613948684
 CanvasRenderer:

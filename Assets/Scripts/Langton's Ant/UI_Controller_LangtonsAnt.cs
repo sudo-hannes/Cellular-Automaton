@@ -23,6 +23,10 @@ public class UI_Controller_LangtonsAnt : MonoBehaviour
     private int index = 0;
     public Slider sliderElement;
     public Text sliderText;
+    public Button infoButton;
+    public GameObject infoText;
+    private bool infoShown = false;
+    public Button exitButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,13 +50,23 @@ public class UI_Controller_LangtonsAnt : MonoBehaviour
 
         Slider slider = sliderElement.GetComponent<Slider>();
         slider.onValueChanged.AddListener(delegate { ChangeStep(); });
+
+        Button btnInfo = infoButton.GetComponent<Button>();
+        btnInfo.onClick.AddListener(ShowInfo);
+
+        Button btnExit = exitButton.GetComponent<Button>();
+        btnExit.onClick.AddListener(ExitToMain);
     }
 
+    void ExitToMain()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("Main Menu");
+            ExitToMain();
         }
     }
 
@@ -253,5 +267,11 @@ public class UI_Controller_LangtonsAnt : MonoBehaviour
         LangtonsAnt ant = GameObject.Find("Grid").GetComponent<LangtonsAnt>();
         ant.stepCount = (int)sliderElement.value;
         sliderText.text = sliderElement.value.ToString();
+    }
+
+    void ShowInfo()
+    {
+        infoShown = !infoShown;
+        infoText.SetActive(infoShown);
     }
 }
