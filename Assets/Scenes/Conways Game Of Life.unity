@@ -2120,6 +2120,10 @@ PrefabInstance:
       propertyPath: buttonControl
       value: 
       objectReference: {fileID: 1859588782}
+    - target: {fileID: 7689105469864139349, guid: 027a761c30277b84a9afbd8386d46af8, type: 3}
+      propertyPath: buttonText
+      value: 
+      objectReference: {fileID: 187560931}
     - target: {fileID: 7689105469864139351, guid: 027a761c30277b84a9afbd8386d46af8, type: 3}
       propertyPath: m_Sprite
       value: 
