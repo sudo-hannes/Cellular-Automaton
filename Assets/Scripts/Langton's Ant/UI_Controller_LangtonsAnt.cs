@@ -16,6 +16,7 @@ public class UI_Controller_LangtonsAnt : MonoBehaviour
     public GameObject ruleColourText;
     public GameObject ruleCurrentColourText;
     public GameObject ruleStringInput;
+    private bool inputValid = false;
     public Button ruleStringSubmit;
     public GameObject ruleStringFromText;
     public GameObject ruleStringToText;
@@ -38,6 +39,10 @@ public class UI_Controller_LangtonsAnt : MonoBehaviour
 
         Button btnDirection = directionButton.GetComponent<Button>();
         btnDirection.onClick.AddListener(ChangeDirection);
+
+        //CheckInputString();
+        InputField txtRuleString = ruleStringInput.GetComponent<InputField>();
+        txtRuleString.onValueChanged.AddListener(delegate { CheckInputString(); });
 
         Button ruleStringApply = ruleStringSubmit.GetComponent<Button>();
         ruleStringApply.onClick.AddListener(applyRuleString);
@@ -70,6 +75,33 @@ public class UI_Controller_LangtonsAnt : MonoBehaviour
         }
     }
 
+    void CheckInputString()
+    {
+        string input = ruleStringInput.transform.GetChild(2).GetComponent<Text>().text;
+        int validCount = 0;
+        foreach (char item in input)
+        {
+            if(item == 'L' || item == 'R')
+            {
+                validCount++;
+            }
+        }
+
+        if(validCount == input.Length)
+        {
+            inputValid = true;
+        }
+        else
+        {
+            inputValid = false;
+        }
+        if(input.Length < 1)
+        {
+            inputValid = false;
+        }
+        ruleStringSubmit.interactable = inputValid;
+
+    }
     void applyRuleString()
     {
         string input = ruleStringInput.transform.GetChild(2).GetComponent<Text>().text;
