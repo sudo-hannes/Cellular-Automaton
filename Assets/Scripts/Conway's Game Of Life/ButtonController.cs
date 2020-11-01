@@ -14,6 +14,7 @@ public class ButtonController : MonoBehaviour
     public GameOfLife golObj;
     int[,] state;
     public TextAsset jsonFile;
+    public Text genText;
     private void Start()
     {
         PatternsData patterns = JsonUtility.FromJson<PatternsData>(jsonFile.text);
@@ -77,6 +78,8 @@ public class ButtonController : MonoBehaviour
         }
 
         golObj.states = state;
+        golObj.genCount = 0;
+        golObj.generations.Clear();
         golObj.drawStates();
         Camera.main.transform.position = new Vector3(0.0f, 0.0f, -100.0f);
     }
